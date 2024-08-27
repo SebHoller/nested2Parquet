@@ -2,6 +2,8 @@
 
 nested2Parquet is a robust and memory-efficient parser for nested JSON to Apache Parquet files
 
+It uses the [Dreml](https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/) encoding for nested structures in Parquet.
+
 This project is my Master's Thesis at Technical University Munich (TUM)
 
 ## Development
