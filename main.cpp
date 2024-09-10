@@ -423,6 +423,10 @@ struct MyHandler : public BaseReaderHandler<UTF8<>, MyHandler>
         {
             return false;
         }
+        if (global_rg_writer->column(column_index)->type() != parquet::Type::DOUBLE)
+        {
+            return false;
+        }
 
         (*global_parquet_data)[column_index].double_values.push_back(d);
         (*global_parquet_data)[column_index].definition_levels.push_back((*global_current_keys).size() - global_required_count);
@@ -471,6 +475,10 @@ struct MyHandler : public BaseReaderHandler<UTF8<>, MyHandler>
         else
         {
             // default
+            if (!field->logical_type()->is_string())
+            {
+                return false;
+            }
             (*global_parquet_data)[column_index].string_values.push_back(str);
         }
 
